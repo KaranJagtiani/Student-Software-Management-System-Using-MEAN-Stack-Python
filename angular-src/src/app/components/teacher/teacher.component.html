@@ -1,0 +1,210 @@
+<app-loader></app-loader>
+<div class="header">
+    <p class="h3">Users</p>
+</div>
+<hr>
+<div class = "info container text-center">
+    <span class = "one">
+        <p class = "h6 inline">Online: </p>
+        <span class = "green_circle inline"></span>
+    </span>
+    <span class = "one">
+        <p class = "h6 inline">Offline: </p>
+        <span class = "gray_circle inline"></span>
+    </span>
+
+
+    
+</div>
+<div *ngFor="let user of onlineUsers">
+    <div (click)="onlineUserInfo.show()" class="online-user">
+        <span class="name">{{user.name}}</span>
+    </div>
+    <div mdbModal #onlineUserInfo="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="myModalLabel">User Information<button (click)="onlineUserInfo.hide()"
+                        class="btn btn-danger float-right" mat-button aria-label="Close"><i
+                            class="fa fa-times"></i></button>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-3 col-md-5 col-4">
+                        <p class="h5 text-center font-weight-bold">Name:</p>
+                    </div>
+                    <div class="col-md-7 col-8 text-right">
+                        <p class="h5 text-center font-weight-bold">{{user.name}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-3 col-md-5 col-4">
+                        <p class="h5 text-center font-weight-bold">Faculty:</p>
+                    </div>
+                    <div class="col-md-7 col-8 text-right">
+                        <p class="h5 text-center font-weight-bold">{{user.faculty}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-3 col-md-5 col-4">
+                        <p class="h5 text-center font-weight-bold">Department:</p>
+                    </div>
+                    <div class="col-md-7 col-8 text-right">
+                        <p class="h5 text-center font-weight-bold">{{user.department.name}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-3 col-md-5 col-4">
+                        <p class="h5 text-center font-weight-bold">Semester:</p>
+                    </div>
+                    <div class="col-md-7 col-8 text-right">
+                        <p class="h5 text-center font-weight-bold">{{user.semester}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-3 col-md-5 col-4">
+                        <p class="h5 text-center font-weight-bold">Mobile:</p>
+                    </div>
+                    <div class="col-md-7 col-8 text-right">
+                        <p class="h5 text-center font-weight-bold">{{user.mobile}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-3 col-md-5 col-4">
+                        <p class="h5 text-center font-weight-bold">Email:</p>
+                    </div>
+                    <div class="col-md-7 col-8 text-right">
+                        <p class="h5 text-center font-weight-bold">{{user.email}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div *ngIf = "user.loggedInAt">
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Last Login:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.loggedInAt}}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-3 col-md-5 col-4">
+                        <p class="h5 text-center font-weight-bold">Last Logout:</p>
+                    </div>
+                    <div class="col-md-7 col-8 text-right">
+                        <p class="h5 text-center font-weight-bold"> - </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+
+<div *ngFor="let user of Users">
+    <div (click)="userInfo.show()" class="user">
+        <span class="name">{{user.name}}</span>
+    </div>
+
+    <div mdbModal #userInfo="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100" id="myModalLabel">User Information<button (click)="userInfo.hide()"
+                            class="btn btn-danger float-right" mat-button aria-label="Close"><i
+                                class="fa fa-times"></i></button>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Name:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.name}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Faculty:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.faculty}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Department:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.department.name}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Semester:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.semester}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Mobile:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.mobile}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Email:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.email}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div *ngIf = "user.loggedInAt">
+                        <div class="row justify-content-md-center">
+                            <div class="col-sm-3 col-md-5 col-4">
+                                <p class="h5 text-center font-weight-bold">Last Login:</p>
+                            </div>
+                            <div class="col-md-7 col-8 text-right">
+                                <p class="h5 text-center font-weight-bold">{{user.loggedInAt}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Last Logout:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.loggedOutAt}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

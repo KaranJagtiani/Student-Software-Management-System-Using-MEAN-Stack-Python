@@ -1,0 +1,281 @@
+<app-loader></app-loader>
+<flash-messages></flash-messages>
+<div class="container1">
+  <div *ngIf="admin || adminU">
+    <div class="action_buttons">
+      <button mat-button class="btn btn-dark" (click)="addFaculty(add_faculty)" type="button">Add Faculty</button>
+    </div>
+    <ng-template #add_faculty let-modal>
+      <div class="cross_button">
+        <h1 id="formTitle" mat-dialog-title>Add Faculty</h1>
+        <button id="add_faculty_x" mat-button aria-label="Close"><i class="fa fa-times"></i></button>
+      </div>
+      <hr>
+      <form #frm="ngForm" (submit)="submitFaculty()">
+        <div class="below_header">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" placeholder="Enter Name of Faculty" require="true" [(ngModel)]="name"
+              name="name" required>
+          </mat-form-field>
+
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Number Of Courses</mat-label>
+              <input (change)="numberOfStreams()" type="number" matInput [(ngModel)]="size" name="size"
+                placeholder="Enter Number Of Streams" value="1" min="1" max="30" required>
+            </mat-form-field>
+          </div>
+
+          <div class="departments inline_block">
+            <span *ngFor="let size of departmentArray">
+              <mat-form-field appearance="outline">
+                <mat-label>Enter Department {{size+1}}</mat-label>
+                <input matInput id="course_input" type="text" placeholder="Enter Department {{size+1}}"
+                  [(ngModel)]="departmentName[size]" name="departmentName[size]" required>
+              </mat-form-field>
+              <p class="inline_block"></p>
+              <mat-form-field appearance="outline">
+                <mat-label>Enter Course {{size+1}}</mat-label>
+                <input matInput id="course_input" type="text" placeholder="Enter Course {{size+1}}"
+                  [(ngModel)]="modelName[size]" name="modelName[size]" required>
+              </mat-form-field>
+            </span>
+          </div>
+
+          <div class="form-group btnSubmit">
+            <button mat-button class="btn btn-success" type="submit" [disabled]="frm.invalid">Submit</button>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+
+    <div *ngFor="let names of faculty">
+      <div *ngIf = "universityFilter == 'All'"><b>{{names.university}}:</b></div>
+      <table class="table table-bordered table-hover table-dark">
+        <thead class="thead-warning">
+          <tr>
+            <th scope="col" colspan="3"><span><button (click)="addCourse(addCourseTemp)" mat-button
+                  class="btn btn-success"><i class="fa fa-plus" style="font-size:10px"></i>Add
+                  Department</button></span>{{names.name}}<span (click)="removeFacultyClick(removeFaculty)"
+                class="minus_button"><i class="fa fa-minus-circle"></i></span></th>
+          </tr>
+        </thead>
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Department Name</th>
+            <th>Course Name</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let course_name of names.department; let i = index">
+            <td>{{i+1}}.</td>
+            <td>{{course_name.name}}</td>
+            <td>{{course_name.course}}<span (click)="courseRemoveClicked(course_name, removeCourse)"
+                class="minus_button"><i class="fa fa-minus-circle"></i></span></td>
+            <ng-template #removeCourse let-modal>
+              <mat-dialog-content>
+                <div class="cross_button">
+                  <h4>Are You Sure</h4>
+                  <button mat-button mat-dialog-close aria-label="Close"><i class="fa fa-times"></i></button>
+                </div>
+                <hr>
+                <div class="modal_header">
+
+                  <h5>Remove <span class="remove_name">{{course_name.name}}</span> from {{names.name}}</h5>
+                  <button id="confirm_button" mat-button
+                    (click)="confirmRemoveCourse(names, course_name)">Confirm</button>
+                </div>
+              </mat-dialog-content>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <ng-template #removeFaculty let-modal>
+        <mat-dialog-content>
+          <div class="cross_button">
+            <h4>Are You Sure</h4>
+            <button mat-button mat-dialog-close aria-label="Close"><i class="fa fa-times"></i></button>
+          </div>
+          <hr>
+          <div class="modal_header">
+
+            <h5>Remove <span class="remove_name">{{names.name}}</span> from Faculty List?</h5>
+            <button id="confirm_button" mat-button (click)="confirmRemoveFaculty(names)">Confirm</button>
+          </div>
+        </mat-dialog-content>
+      </ng-template>
+
+      <ng-template #addCourseTemp let-modal>
+        <div class="cross_button">
+          <h4>Add Department</h4>
+          <button mat-button mat-dialog-close aria-label="Close"><i class="fa fa-times"></i></button>
+        </div>
+        <hr>
+        <div class="modal_header">
+          <h5 id="add_course_header">In <span class="h5">{{names.name}}</span><span *ngIf="admin">,
+              {{names.university}}</span></h5>
+          <form #frm="ngForm">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Enter Department Name</mat-label>
+              <input matInput type="text" placeholder="Enter Name Of The Department" [(ngModel)]="depToBeAdded"
+                name="depToBeAdded" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Enter Course Name</mat-label>
+              <input matInput type="text" placeholder="Enter Course Name" [(ngModel)]="courseToBeAdded"
+                name="courseToBeAdded" required>
+            </mat-form-field>
+
+            <div class="form-group btnSubmit">
+              <button (click)="submitCourse(names)" mat-button class="btn btn-primary btn-block" type="submit"
+                [disabled]="frm.invalid">Submit</button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+
+  <div *ngIf="dean">
+
+    <div *ngFor="let names of facultyDean">
+      <table class="table table-bordered table-hover table-dark">
+        <thead class="thead-warning">
+          <tr>
+            <th scope="col" colspan="5"><span><button (click)="addCourse(addCourseTempD)" mat-button
+                  class="btn btn-success"><i class="fa fa-plus" style="font-size:10px"></i>Add
+                  Department</button></span>{{names.name}}</th>
+          </tr>
+        </thead>
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Department Name</th>
+            <th>Course Name</th>
+            <th>Head Of Department</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let course_name of names.department; let i = index">
+            <td>{{i+1}}.</td>
+            <td>{{course_name.name}}</td>
+            <td>{{course_name.course}}</td>
+            <td>
+              <span class="rem_hod" *ngIf="course_name.hod">{{course_name.hod.name}}<i
+                  matTooltip="Remove Head Of Department" matTooltipClass="red-tooltip2" matTooltipShowDelay="500"
+                  matTooltipPosition="above" (click)="removeHod(removeHOD)" class="fa fa-times-circle"></i></span>
+              <span *ngIf="!course_name.hod"><button (click)="addHod(addHodModal)" mat-button class="btn btn-primary"><i
+                    class="fa fa-plus" style="font-size:10px"></i>Add HOD</button></span>
+            </td>
+            <td><span (click)="courseRemoveClicked(course_name, removeCourseD)" matTooltip="Remove Department"
+                matTooltipClass="red-tooltip2" matTooltipShowDelay="500" matTooltipPosition="above"
+                class="minus_button"><i class="fa fa-minus-circle"></i></span></td>
+            <ng-template #removeCourseD let-modal>
+              <mat-dialog-content>
+                <div class="cross_button">
+                  <h4>Are You Sure</h4>
+                  <button mat-button mat-dialog-close aria-label="Close"><i class="fa fa-times"></i></button>
+                </div>
+                <hr>
+                <div class="modal_header">
+
+                  <h5>Remove <span class="remove_name">{{course_name.name}}</span> from {{names.name}}</h5>
+                  <button id="confirm_button" mat-button
+                    (click)="confirmRemoveCourse(names, course_name)">Confirm</button>
+                </div>
+              </mat-dialog-content>
+            </ng-template>
+
+            <ng-template #removeHOD let-modal>
+              <mat-dialog-content>
+                <div class="cross_button">
+                  <h4>Are You Sure</h4>
+                  <button mat-button mat-dialog-close aria-label="Close"><i class="fa fa-times"></i></button>
+                </div>
+                <hr>
+                <div class="modal_header">
+                  <h5>Remove <span class="remove_name">{{course_name.hod.name}}</span> from {{course_name.name}}</h5>
+                  <form (click)="removeHodConfirm(names, course_name)">
+                    <button id="confirm_button" mat-button type="submit">Confirm</button>
+                  </form>
+                </div>
+              </mat-dialog-content>
+            </ng-template>
+
+            <ng-template #addHodModal let-modal>
+              <div class="cross_button">
+                <h4>Add Head Of Department</h4>
+                <button mat-button mat-dialog-close aria-label="Close"><i class="fa fa-times"></i></button>
+              </div>
+              <hr>
+              <div class="modal_header">
+                <h5 id="add_course_header">In <span class="h5">{{names.name}}</span><span *ngIf="admin">,
+                    {{names.university}}</span></h5>
+
+                <form #frmHOD="ngForm" (submit)="confirmHod(names, course_name)">
+                  <mat-form-field appearance="outline">
+                    <mat-label>HOD</mat-label>
+                    <mat-select [(value)]="selectedHOD" required>
+                      <mat-option *ngFor="let teacher of teachersList" [value]="teacher">
+                        {{teacher.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="form-group btnSubmit">
+                    <button mat-button class="btn btn-primary btn-block" type="submit"
+                      [disabled]="frmHOD.invalid">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #addCourseTempD let-modal>
+        <div class="cross_button">
+          <h4>Add Department</h4>
+          <button mat-button mat-dialog-close aria-label="Close"><i class="fa fa-times"></i></button>
+        </div>
+        <hr>
+        <div class="modal_header">
+          <h5 id="add_course_header">In <span class="h5">{{names.name}}</span><span *ngIf="admin">,
+              {{names.university}}</span></h5>
+          <form #frm="ngForm">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Enter Department Name</mat-label>
+              <input matInput type="text" placeholder="Enter Name Of The Department" [(ngModel)]="depToBeAdded"
+                name="depToBeAdded" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Enter Course Name</mat-label>
+              <input matInput type="text" placeholder="Enter Course Name" [(ngModel)]="courseToBeAdded"
+                name="courseToBeAdded" required>
+            </mat-form-field>
+
+            <div class="form-group btnSubmit">
+              <button (click)="submitCourse(names)" mat-button class="btn btn-primary btn-block" type="submit"
+                [disabled]="frm.invalid">Submit</button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+
+
+
+    </div>
+  </div>
+
+</div>

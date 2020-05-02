@@ -1,0 +1,37 @@
+<app-loader></app-loader>
+<app-navbar></app-navbar>
+<div class="my_container">
+    <div class="login100-form">
+        <p class="h3 text-center header">Sign In</p>
+        <form (submit)="login()">
+            <div class="wrap-input100 validate-input">
+                <input class="input100" id="username" type="text" name="username" [(ngModel)]="username"
+                    placeholder="Username" autocapitalize=off>
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="wrap-input100 validate-input">
+                <input class="input100" id="password" type="password" name="password" [(ngModel)]="password"
+                    placeholder="Password">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="center justify-content-center">
+                <div class="invalidCred" *ngIf="invalidCred">{{response}}</div>
+                <div class="formEmpty" *ngIf="formEmpty">Both fields are required.</div>
+            </div>
+            <div class="container-login100-form-btn submit-button">
+                <button mat-button type="submit" class="btn login100-form-btn">
+                    Submit
+                </button>
+            </div>
+            <div class="signup">
+                <p class="login__signup">Don't have an account? &nbsp;<a (click)="registerClicked()">Sign up</a></p>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+<div class="header">
+    <p class="h3">Users</p>
+</div>
+<hr>
+
+<div *ngFor="let user of Users">
+    <div class="user">
+        <span class="name">{{user.name}}</span>
+        <button (click)="userInfo.show()" mat-button class="btn btn-primary"><i class="fa fa-eye"
+            style="font-size:10px"></i>Info
+        </button>
+        <button (click)="deleteAccount.show()" mat-button class="btn btn-danger"><i class="fa fa-trash"
+            style="font-size:10px"></i>Delete
+        </button>
+    </div>
+
+
+    <div mdbModal #deleteAccount="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="font-weight-bolder modal-title w-100" id="myModalLabel">Delete User Account <button
+                  (click)="deleteAccount.hide()" class="btn btn-danger float-right" mat-button aria-label="Close"><i
+                    class="fa fa-times"></i></button>
+              </h4>
+            </div>
+            <div class="modal-body">
+              <div class="modal_header text-center">
+                <h5><b>Name: </b><span class="remove_name">{{user.name}}</span>, <b>Username: </b><span
+                    class="remove_name">{{user.username}}</span></h5>
+                <form (submit)="deleteAccountConfirn(user)">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Enter Password</mat-label>
+                    <input matInput type="password" placeholder="Enter Password" [(ngModel)]="adminPass"
+                      name="adminPass" required>
+                  </mat-form-field>
+                  <div class="usernameTaken" *ngIf="adminPassErr">{{errMsg}}</div>
+                  <button mat-button type="submit" class="btn btn-danger container-fluid">Confirm</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div mdbModal #userInfo="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100" id="myModalLabel">User Information<button (click)="userInfo.hide()"
+                            class="btn btn-danger float-right" mat-button aria-label="Close"><i
+                                class="fa fa-times"></i></button>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Name:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.name}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Faculty:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.faculty}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Department:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.department.name}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Semester:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.semester}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Mobile:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.mobile}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Email:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.email}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Last Login:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.loggedInAt}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3 col-md-5 col-4">
+                            <p class="h5 text-center font-weight-bold">Last Logout:</p>
+                        </div>
+                        <div class="col-md-7 col-8 text-right">
+                            <p class="h5 text-center font-weight-bold">{{user.loggedOutAt}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

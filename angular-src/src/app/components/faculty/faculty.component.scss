@@ -1,0 +1,295 @@
+flash-messages {
+    font-weight: bolder !important;
+    text-align: center !important;
+    position: fixed;
+    float: top;
+    top: 0.1px;
+    margin-left: -135px;
+    z-index: 9999;
+    width: 100%;
+  }
+  
+  .container1 {
+    margin: 0 auto;
+    padding-top: 100px;
+    width: 95%;
+  }
+  
+  @media only screen and (min-width: 1024px) {
+    .container {
+      margin-left: 155px;
+      width: 89.5%;
+    }
+    flash-messages {
+      margin-left: -60px !important;
+    }
+  
+    .departments .mat-form-field {
+      width: 46%;
+    }
+  
+    .departments p {
+      margin-left: 20px !important;
+      margin-right: 20px !important;
+    }
+  }
+  
+  @media only screen and (min-width: 1366px) {
+    .container {
+      margin-left: 134px;
+      width: 100%;
+    }
+    flash-messages {
+      margin-left: -142px !important;
+    }
+  }
+  
+  table {
+    text-align: center;
+  }
+  
+  th {
+    margin-right: -40px;
+    margin-bottom: -12px;
+    font-size: 17px;
+  }
+  
+  table i {
+    margin-top: -4px;
+    margin-right: 5px;
+  }
+  
+  th .mat-button {
+    float: left;
+    left: 0.1px;
+    margin-top: -5px;
+    font-size: 12px;
+  }
+  
+  td .mat-button {
+    font-size: 12px;
+  }
+  
+  @media only screen and (max-width: 946px) {
+    .container {
+      margin-left: 0px;
+    }
+    .cross_button {
+      margin-bottom: -10px;
+    }
+    .cross_button h4 {
+      margin-left: -60px;
+    }
+  
+    flash-messages {
+      margin-left: -30px;
+    }
+  
+    .modal_header {
+      margin-top: 25px;
+    }
+  
+    .modal_header button {
+      margin-top: 10px;
+    }
+  }
+  
+  .cross_button h4,
+  h1 {
+    margin-top: 8px;
+    text-align: center;
+  }
+  
+  #add_faculty_x {
+    margin-top: -57px;
+  }
+  
+  .cross_button button {
+    z-index: 999;
+    float: right;
+    margin-top: -42px;
+    margin-right: -5px;
+    color: #1d1d1d;
+    background: #fff;
+    border: none;
+    text-decoration: none;
+    margin-left: -5px;
+  }
+  
+  .cross_button button:hover {
+    color: #ff1346;
+  }
+  
+  .below_header {
+    margin-top: 30px;
+  }
+  
+  .action_buttons .mat-button {
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    text-transform: uppercase;
+    width: 100%;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 10px;
+    color: #fff;
+    //background: #27ff4b;
+  }
+  
+  .btnSubmit {
+    text-align: center;
+  }
+  
+  .btnSubmit .mat-button {
+    margin-bottom: -5px;
+    background: #0b68ff;
+    color: #ffffff;
+    padding: 10px;
+    width: 35%;
+  }
+  
+  #add_header {
+    text-align: center;
+  }
+  
+  #confirm_button {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .department_names {
+    border: 2px solid #1d1d1d;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .department_names p {
+    text-align: center;
+    background: #1d1d1d;
+    color: #fff;
+    font-size: 19px;
+    padding: 10px;
+    font-weight: bolder;
+  }
+  
+  .minus_button{
+    float: right;
+    right: 5px;
+    margin-bottom: -5px;
+  }
+  
+  .minus_button i:hover {
+    cursor: pointer;
+    color: rgb(255, 25, 36);
+  }
+  
+  .department_names h3 {
+    font-size: 18px;
+    margin-top: -5px;
+    margin-left: 10px;
+  }
+  
+  .course_names {
+    padding: 5px;
+    font-size: 17px;
+    font-weight: bolder;
+  
+    color: #000;
+    border-top: 1px solid #000;
+  }
+  
+  .nos {
+    width: 100%;
+    display: inline-flex;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .addBtn {
+    padding: 11px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: -1.5px;
+  }
+  
+  .required {
+    display: inline;
+    right: 1px;
+    color: red;
+  }
+  
+  .action_buttons {
+    text-align: center;
+  }
+  
+  .modal_header {
+    text-align: center;
+  }
+  
+  .modal_header button {
+    color: white;
+    background: rgb(255, 23, 42);
+    padding: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  
+  .modal_header h5 {
+    -webkit-font-smoothing: antialiased;
+    margin-top: 25px;
+  }
+  
+  #add_course_header {
+    margin-bottom: 20px;
+  }
+  
+  #content {
+    align-content: center;
+  }
+  
+  .remove_name {
+    font-weight: bolder;
+  }
+  
+  .inline_block {
+    display: inline;
+  }
+  
+  .departments .mat-form-field {
+    width: 47%;
+  }
+  
+  .departments p {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  
+  .rem_hod i {
+    margin-left: 5px;
+  }
+  
+  .rem_hod i:hover {
+    color: red;
+    cursor: pointer;
+  }
+  
+  ::ng-deep .red-tooltip2 {
+      margin-bottom: 20px !important;
+      font-weight: bolder !important;
+      text-align: center !important;
+      font-size: 13.3px !important;
+      color: #ffffff !important;
+    }
+  
+    #filter_i{
+      font-size: 14px;
+      margin-right: 5px;
+    }
+  
+    .mat-form-field:hover i{
+      color: red;
+    }
