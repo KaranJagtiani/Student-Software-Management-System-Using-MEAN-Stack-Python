@@ -31,11 +31,12 @@ Based on the added faculties and department(s) within that faculty, student can 
 ![](images/register.jpg)
 
 ### 5) Users Information Page
-Here the admin can view information of both students and teachers, can also delete their accounts.
+Here, the admin can view information and delete accounts of both students and teachers.
 
 ![](images/admin.jpg)
 
 ### 6) Students Information Page
+The teacher can see the students who are online and currently using the software being tracked.
 ![](images/users.jpg)
 
 ## Types of Users
@@ -66,9 +67,7 @@ git clone https://github.com/KaranJagtiani/Student-Software-Management-System.gi
 npm install
 ```
 
-3. Upload "nodemcu_sketch" on your Node MCU.
-
-4. Make sure MongoDB is running:
+3. Make sure MongoDB is running:
 
 ```
 mongod
