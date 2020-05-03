@@ -20,7 +20,6 @@ import {
   MatProgressBarModule
 } from '@angular/material';
 
-import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -99,7 +98,6 @@ const routes: Routes = [
     MatSelectModule,
     MatIconModule,
     MatProgressBarModule,
-    AlertModule.forRoot(),
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
